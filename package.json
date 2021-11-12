@@ -1,0 +1,22 @@
+{
+  "name": "vehiclechain",
+  "version": "1.0.0",
+  "description": "Blockchain network that helps car owners.",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mh7x/VehicleChain.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mh7x/VehicleChain/issues"
+  },
+  "homepage": "https://github.com/mh7x/VehicleChain#readme"
+}

@@ -1,22 +1,18 @@
 {
-  "name": "vehiclechain",
+  "name": "lottery",
   "version": "1.0.0",
-  "description": "Blockchain network that helps car owners.",
-  "main": "truffle-config.js",
-  "directories": {
-    "test": "test"
-  },
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mh7x/VehicleChain.git"
+    "test": "mocha"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mh7x/VehicleChain/issues"
-  },
-  "homepage": "https://github.com/mh7x/VehicleChain#readme"
+  "dependencies": {
+    "@truffle/hdwallet-provider": "^1.5.1",
+    "ganache-cli": "^6.12.2",
+    "mocha": "^9.1.2",
+    "solc": "^0.4.17",
+    "web3": "^1.6.0"
+  }
 }

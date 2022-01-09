@@ -1,14 +1,27 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.22 <0.9.0;
 
+contract ServiceFactory {
+    address[] public deployedServices;
+
+    function createService () public {
+        address newService = address(new Service(msg.sender));
+        deployedServices.push(newService);
+    }
+
+    function getDeployedServices() public view returns (address[] memory) {
+        return deployedServices;
+    }
+}
+
 contract Service {
     address public manager;
     address public car;
     string private service;
     string[] private services;
 
-    constructor () {
-        manager = msg.sender;
+    constructor (address creator) {
+        manager = creator;
     }
     
     // enters an address of the car

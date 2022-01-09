@@ -1,13 +1,26 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.22 <0.9.0;
 
+contract MileageFactory {
+    address[] public deployedMileages;
+
+    function createMileage () public {
+        address newMileage = address(new Mileage(msg.sender));
+        deployedMileages.push(newMileage);
+    }
+
+    function getDeployedMileages() public view returns (address[] memory) {
+        return deployedMileages;
+    }
+}
+
 contract Mileage {
     address public car;
     address public manager;
     uint[] private mileages; // total mileages
 
-    constructor () {
-        manager = msg.sender;
+    constructor (address creator) {
+        manager = creator;
         mileages = [0];
     }
 

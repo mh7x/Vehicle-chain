@@ -1,6 +1,19 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.22 <0.9.0;
 
+contract InsuranceFactory {
+    address[] public deployedInsurances;
+
+    function createInsurance(address initialCar, address initialOwner) public {
+        address newInsurance = address(new Insurance(initialCar, initialOwner, msg.sender));
+        deployedInsurances.push(newInsurance);
+    }
+
+    function getDeployedInsurances() public view returns (address[] memory) {
+        return deployedInsurances;
+    }
+}
+
 contract Insurance {
     address public car;
     address public manager;
@@ -8,8 +21,8 @@ contract Insurance {
     string[] private publicInsurances;
     string[] private privateInsurances;
 
-    constructor (address initialCar, address initialOwner) {
-        manager = msg.sender;
+    constructor (address initialCar, address initialOwner, address creator) {
+        manager = creator;
         car = initialCar;
         owner = initialOwner;
     }

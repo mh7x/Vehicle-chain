@@ -33,24 +33,6 @@ class InsuranceIndex extends Component {
 
         return <Card.Group items={item} />;
     }
-    
-    onSubmit = async (event) => {
-        event.preventDefault();
-
-        this.setState({ loading: true, errorMessage: "", successMessage: "" });
-
-        try {
-            const accounts = await web3.eth.getAccounts()
-            await insuranceFactory.methods
-                .createInsurance(accounts[0])
-                .send({ from: accounts[0] });
-            
-            this.setState({ successMessage: "Insurance contract added successfully, please save the car address. Please refresh the page! "})
-        } catch (err) {
-            this.setState({ errorMessage: err.message })
-        }
-        this.setState({ loading: false })
-    }
 
     render() {
         return (
@@ -61,11 +43,11 @@ class InsuranceIndex extends Component {
                 </Link>
                 <h3>Open insurance contracts</h3>
                 {this.renderInsuranceContracts()}
-                <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage} success={!!this.state.successMessage}>
-                    <Button primary style={{ marginTop: 20 }} content="New contract" loading={this.state.loading} />
-                    <Message error header="Oops!" content={this.state.errorMessage} />
-                    <Message success header="Success!" content={this.state.successMessage} />
-                </Form>
+                <Link route={"/contracts/insurance/new"} >
+                    <a>
+                        <Button primary style={{ marginTop: 20 }} content="New contract" />
+                    </a>
+                </Link>
             </Layout>
         );
     }
